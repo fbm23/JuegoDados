@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <header><h1>Juego de Dados</h1></header>
+    <section class="calculos">
+        <br><br><br>
+
+
+        <input type="number" id="n1">
+        Nro de jugadores: </p>
+        <br><br>
+        <button class="button" id="btn1">Jugar</button>
+
+
+        <br><br><br>
+        <h2>
+            Se lanza 2 dados por jugador:</p>
+            <div id="resultado"></div>
+            <div id="ganador"></div>
+
+            <script>
+                //  ------------------ Juego
+                var b = document.getElementById('btn1');
+                b.addEventListener('click', dados);
+
+                function dados() {
+                    var nr1 = parseInt(document.getElementById('n1').value);
+                    const jugadores = [];
+                    for (let i = 0; i < nr1; i++) {
+                        jugadores[i] = 2 + Math.floor(Math.random() * 11);
+                    }
+                    document.getElementById("resultado").innerHTML = jugadores
+
+                    var max = 0;
+                    for (let i = 0; i < nr1; i++) {
+                        if (jugadores[i] > max) {
+                            max = jugadores[i];
+                        }
+                    }
+                    var cont = 0;
+
+                    for (let i = 0; i < nr1; i++) {
+                        if (jugadores[i] == max) {
+                            cont++;
+                        }
+                    }
+                    //document.getElementById("ganador").innerHTML = cont
+                    if (cont == 1) {
+                        document.getElementById("ganador").innerHTML = "El ganador es el jugador  con el numero: " + max
+
+                    }
+                    else if (cont > 1) {
+                        document.getElementById("ganador").innerHTML = "Lanzar de nuevo, no hay ganadores"
+
+                    }
+
+                }
+
+
+
+            </script>
+    </section>
+</body>
+
+</html>
